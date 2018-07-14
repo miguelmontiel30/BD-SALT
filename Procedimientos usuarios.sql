@@ -26,15 +26,16 @@ CALL agregarUsuarios('Roberto','Garcia','Conductor','rober');
 
 DROP PROCEDURE IF EXISTS updateUsuarios;
 DELIMITER $$
-CREATE PROCEDURE updateUsuarios(
-	IN IdUser INT(4),
-	IN nomUser VARCHAR(25),
-    IN apeUser VARCHAR(25),
-    IN rolUser VARCHAR(15),
-    IN contraUser VARCHAR(20))
+CREATE PROCEDURE update_user(
+	IN id INT(4),
+	IN name VARCHAR(25),
+    IN lname VARCHAR(25),
+    IN user_rol VARCHAR(15),
+    IN email VARCHAR(50),
+    IN pass VARCHAR(20))
 BEGIN
-	UPDATE usuarios set nombre = nomUser, apellido = apeUser, rol = rolUser, 
-    contrasenia = contraUser WHERE id_usuario = IdUser;
+	UPDATE usuarios set nombre = name, apellido = lname, rol = user_rol, 
+    correo = email, contrasenia = pass WHERE id_usuario = id;
 END $$
 DELIMITER ;
 

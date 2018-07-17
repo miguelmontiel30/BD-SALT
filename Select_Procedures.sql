@@ -6,3 +6,10 @@ BEGIN
 SELECT id_usuario,nombre,apellido,rol,foto_perfil FROM usuarios where correo = user and contrasenia = pass;
 END $$
 
+             /*Procedimiento para cargar a los usuarios de la BD*/
+DELIMITER $$
+CREATE PROCEDURE select_users()
+BEGIN
+SELECT * FROM usuarios;
+END $$                                                                
+

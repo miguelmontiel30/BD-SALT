@@ -19,3 +19,13 @@ BEGIN
 	UPDATE usuarios set nombre = name, apellido = lname, rol = user_rol, 
     correo = email WHERE id_usuario = id;
 END $$
+
+			 
+				/* Procedimiento para cambiar el kilometraje del vehiculo */
+DELIMITER $$
+CREATE PROCEDURE update_kilometraje(
+    IN id INT(4),
+    IN kilo INT(8))				
+BEGIN    
+	UPDATE vehiculos SET kilometraje = kilo WHERE id_vehiculo = id;
+END $$

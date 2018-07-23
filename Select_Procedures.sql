@@ -13,3 +13,18 @@ BEGIN
 SELECT * FROM usuarios;
 END $$                                                                
 
+                      /* Procedimiento para cargar los conductores del sistema */
+DELIMITER $$                                                                
+CREATE PROCEDURE select_drivers()
+BEGIN
+SELECT * FROM usuarios WHERE rol = "Conductor";
+END $$
+                                                                
+                                                                
+                    /* Procedimiento para cargar los vehiculos */
+DELIMITER $$                                                                
+CREATE PROCEDURE select_cars()
+BEGIN
+SELECT * FROM vehiculos;
+END $$                                                          
+                                                                

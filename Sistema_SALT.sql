@@ -13,12 +13,12 @@ anio VARCHAR(4) NOT NULL,
 placa VARCHAR(8) NOT NULL,
 capacidad_tanque INT(4) NOT NULL,
 tipo_combustible VARCHAR(9) NOT NULL,
-rendimiento DOUBLE(2,1) NOT NULL,
-tarjeta_circulacion VARCHAR(25) NOT NULL,
-estado VARCHAR(15) NOT NULL,
-vigencia DATE NOT NULL,
+rendimiento FLOAT NOT NULL,
+no_tarjeta VARCHAR(25) NOT NULL,
+estado_tarjeta VARCHAR(15) NOT NULL,
+vigencia_tarjeta DATE NOT NULL,
 kilometraje INT(8) NOT NULL,
-periodo_mantenimiento VARCHAR(10) NOT NULL,
+periodo_mantenimiento VARCHAR(20) NOT NULL,
 estado_vehiculo VARCHAR(15) NOT NULL);
 
 
@@ -61,26 +61,7 @@ estado_llantas VARCHAR(20) NOT NULL,
 descripcion VARCHAR(50) NOT NULL,
 foto_factura MEDIUMBLOB NULL,
 id_vehiculo INT(4) ZEROFILL NOT NULL,
-FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo)); 
-
-
-									/* Creación de la tabla presupuestos */
-
-CREATE TABLE presupuestos(
-id_presupuesto INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
-distancia INT(5) NOT NULL,
-precio_combustible DOUBLE(2,2) NOT NULL,
-total_combustible DOUBLE(3,1) NOT NULL,
-litros_combustible DOUBLE(3,1) NOT NULL,
-vale_gasolina TINYINT NOT NULL,
-no_vale INT(4) NULL,
-total_casetas INT(2) NOT NULL,
-gasto_casetas DOUBLE(4,2) NOT NULL,
-no_personas INT(2) NOT NULL,
-hotel DOUBLE(4,2) NOT NULL,
-comida DOUBLE(4,2) NOT NULL,
-total_biaticos DOUBLE(4,2) NOT NULL,
-total_presupuesto DOUBLE(4,2) NOT NULL);                
+FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo));                 
 
 
 									/* Creación de la tabla usuarios */
@@ -105,13 +86,32 @@ estado_viaje VARCHAR(15) NOT NULL,
 observaciones VARCHAR(50) NOT NULL,
 id_vehiculo INT(8) ZEROFILL NOT NULL,
 id_usuario INT(4) ZEROFILL NOT NULL,
-id_presupuesto INT(8) ZEROFILL NOT NULL,
 FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo), 
-FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario), 
-FOREIGN KEY (id_presupuesto) REFERENCES presupuestos(id_presupuesto)); 
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)); 
 
+						     
+						     /* Creación de la tabla presupuestos */
 
-									/* Creación de la tabla revision de vehiculo */	
+CREATE TABLE presupuestos(
+id_presupuesto INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+distancia INT(5) NOT NULL,
+precio_combustible DOUBLE(2,2) NOT NULL,
+total_combustible DOUBLE(3,1) NOT NULL,
+litros_combustible DOUBLE(3,1) NOT NULL,
+vale_gasolina TINYINT NOT NULL,
+no_vale INT(4) NULL,
+total_casetas INT(2) NOT NULL,
+gasto_casetas DOUBLE(4,2) NOT NULL,
+no_personas INT(2) NOT NULL,
+hotel DOUBLE(4,2) NOT NULL,
+comida DOUBLE(4,2) NOT NULL,
+total_biaticos DOUBLE(4,2) NOT NULL,
+total_presupuesto DOUBLE(4,2) NOT NULL,
+id_viaje INT(8) ZEROFILL NOT NULL,
+FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje)); 
+					 
+					
+						/* Creación de la tabla revision de vehiculo */	
                                     
 CREATE TABLE revision_vehiculo(
 id_revision INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,

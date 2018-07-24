@@ -27,3 +27,33 @@ BEGIN
 		       observaciones,id_vehiculo,id_usuario)
     VALUES(f_salida,dest,mot,'Iniciado',obs,id_ve,id_us);
 END$$
+
+
+/*Procedimiento para insertar vehiculos con imagen */
+
+DELIMITER $$
+CREATE PROCEDURE agregarVehiculoImagen (
+	IN foto VARCHAR(255),
+    IN marcaVehi VARCHAR(20), 
+    IN modeloVehi VARCHAR(20), 
+    IN numSerie VARCHAR(25), 
+    IN anio VARCHAR(4), 
+    IN placaVehi VARCHAR(8), 
+    IN tanque INT(4), 
+    IN combustible VARCHAR(9), 
+    IN rendiVehi FLOAT, 
+    IN numTarjeta VARCHAR(25), 
+    IN estTarjeta VARCHAR(25), 
+    IN vijeTarjeta DATE, 
+    IN km INT(8), 
+    IN manteVehi VARCHAR(20), 
+    IN estadoVehi VARCHAR(15))  
+BEGIN
+	INSERT INTO vehiculos(imagen_vehiculo,marca,modelo,no_serie,anio,placa,capacidad_tanque,tipo_combustible,
+    rendimiento,numero_tarjeta,estado_tarjeta,vigencia_tarjeta,kilometraje,periodo_mantenimiento,estado_vehiculo)
+    
+    VALUES(foto,marcaVehi,modeloVehi,numSerie,anio,placaVehi,tanque,combustible,
+    rendiVehi,numTarjeta,estTarjeta,vijeTarjeta,km,manteVehi,estadoVehi);
+END$$
+
+DELIMITER $$

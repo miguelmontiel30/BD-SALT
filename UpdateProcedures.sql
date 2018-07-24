@@ -29,3 +29,30 @@ CREATE PROCEDURE update_kilometraje(
 BEGIN    
 	UPDATE vehiculos SET kilometraje = kilo WHERE id_vehiculo = id;
 END $$
+		
+				/* Procedimiento para editar viajes */
+DELIMITER $$
+CREATE PROCEDURE update_travel(
+    	IN id_vi INT(8),
+   	IN f_salida date,
+	IN dest VARCHAR(20),
+	IN mot VARCHAR(35),
+	IN edo VARCHAR(15),
+	IN obs VARCHAR(100),
+	IN id_ve INT(8),
+	IN id_us INT(4));	
+BEGIN    
+	UPDATE viajes SET fecha_salida = f_salida, destino = dest, motivo = mot, observaciones = obs, id_vehiculo = id_ve,
+		     id_usuario = id_us WHERE id_viaje = id_vi;
+END $$
+		     
+		     				/* Procedimiento para cambiar el estado del viaje */
+DELIMITER $$
+CREATE PROCEDURE update_travel_status(
+    IN id INT(4),
+    IN edo VARCHAR(15))				
+BEGIN    
+	UPDATE viajes SET estado_viaje = edo WHERE id_viaje = id;
+END $$
+		     
+		     

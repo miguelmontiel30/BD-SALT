@@ -28,3 +28,9 @@ BEGIN
 SELECT * FROM vehiculos;
 END $$                                                          
                                                                 
+                    /* Procedimiento para cargar los viajes Iniciados */
+DELIMITER $$                                                                
+CREATE PROCEDURE select_travels()
+BEGIN
+SELECT * FROM viajes WHERE estado_viaje = 'Iniciado';
+END $$   

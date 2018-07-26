@@ -57,3 +57,26 @@ BEGIN
 END$$
 
 DELIMITER $$
+			  
+			  
+					/* Procedimiento para insertar presupuestos */
+DELIMITER $$
+CREATE PROCEDURE insert_presupuesto(
+	IN dist INT(5), 
+	precio_c FLOAT,
+	total_c FLOAT,       
+	litros_C FLOAT,
+    vale_c TINYINT(4),
+    n_vale INT(4),
+    t_casetas INT(2),
+    g_casetas FLOAT,
+    n_personas INT(2),
+    t_hotel FLOAT,
+    t_comida FLOAT,
+    t_biaticos FLOAT,
+    t_presupuesto FLOAT,
+	id_via int(8))
+BEGIN
+    INSERT INTO presupuestos(distancia,precio_combustible,total_combustible,litros_combustible,vale_gasolina,no_vale,
+                            total_casetas,gasto_casetas,no_personas,hotel,comida,total_biaticos, total_presupuesto,id_viaje)
+    VALUES

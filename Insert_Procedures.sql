@@ -79,4 +79,6 @@ CREATE PROCEDURE insert_presupuesto(
 BEGIN
     INSERT INTO presupuestos(distancia,precio_combustible,total_combustible,litros_combustible,vale_gasolina,no_vale,
                             total_casetas,gasto_casetas,no_personas,hotel,comida,total_biaticos, total_presupuesto,id_viaje)
-    VALUES
+	VALUES(dist,precio_c,total_c,litros_c,vale_c,n_vale,t_casetas,g_casetas,n_personas,t_hotel,t_comida,t_biaticos,
+	       t_presupuesto,id_via);
+END$$

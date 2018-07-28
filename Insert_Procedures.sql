@@ -1,24 +1,23 @@
-                                             /* Procedimiento para insertar USUARIOS */
+                                             	/* Procedimiento para insertar USUARIOS */
 DELIMITER $$
 CREATE PROCEDURE insert_user(
     IN name varchar(25), 
-    last_name varchar(25),
+    	last_name varchar(25),
 	rol VARCHAR(15),
 	email VARCHAR(25),
 	pass VARCHAR(20))
-DETERMINISTIC
 BEGIN
     INSERT INTO usuarios(nombre,apellido,rol,correo,contrasenia)
     VALUES(name,last_name,rol,email,pass);
 END$$
 		     
 		     
-					/* Procedimiento para insertar viajes */
+						/* Procedimiento para insertar viajes */
 DELIMITER $$
 CREATE PROCEDURE insert_travel(
     IN f_salida date, 
-       dest varchar(20),
-       mot VARCHAR(35),       
+       	dest varchar(20),
+       	mot VARCHAR(35),       
 	obs VARCHAR(50),
 	id_ve int(8),
 	id_us int(4))
@@ -29,11 +28,11 @@ BEGIN
 END$$
 
 
-/*Procedimiento para insertar vehiculos con imagen */
+					/*Procedimiento para insertar vehiculos con imagen */
 
 DELIMITER $$
 CREATE PROCEDURE agregarVehiculoImagen (
-	IN foto VARCHAR(255),
+    IN foto VARCHAR(255),
     IN marcaVehi VARCHAR(20), 
     IN modeloVehi VARCHAR(20), 
     IN numSerie VARCHAR(25), 
@@ -49,36 +48,65 @@ CREATE PROCEDURE agregarVehiculoImagen (
     IN manteVehi VARCHAR(20), 
     IN estadoVehi VARCHAR(15))  
 BEGIN
-	INSERT INTO vehiculos(imagen_vehiculo,marca,modelo,no_serie,anio,placa,capacidad_tanque,tipo_combustible,
-    rendimiento,numero_tarjeta,estado_tarjeta,vigencia_tarjeta,kilometraje,periodo_mantenimiento,estado_vehiculo)
-    
+    INSERT INTO vehiculos(imagen_vehiculo,marca,modelo,no_serie,anio,placa,capacidad_tanque,tipo_combustible,
+    			  rendimiento,numero_tarjeta,estado_tarjeta,vigencia_tarjeta,kilometraje,periodo_mantenimiento,estado_vehiculo)    
     VALUES(foto,marcaVehi,modeloVehi,numSerie,anio,placaVehi,tanque,combustible,
-    rendiVehi,numTarjeta,estTarjeta,vijeTarjeta,km,manteVehi,estadoVehi);
-END$$
-
-DELIMITER $$
+    	   rendiVehi,numTarjeta,estTarjeta,vijeTarjeta,km,manteVehi,estadoVehi);
+END$$		  
 			  
-			  
-					/* Procedimiento para insertar presupuestos */
+					  /* Procedimiento para insertar presupuestos */
 DELIMITER $$
 CREATE PROCEDURE insert_presupuesto(
 	IN dist INT(5), 
 	precio_c FLOAT,
 	total_c FLOAT,       
 	litros_C FLOAT,
-    vale_c TINYINT(4),
-    n_vale INT(4),
-    t_casetas INT(2),
-    g_casetas FLOAT,
-    n_personas INT(2),
-    t_hotel FLOAT,
-    t_comida FLOAT,
-    t_biaticos FLOAT,
-    t_presupuesto FLOAT,
+    	vale_c TINYINT(4),
+    	n_vale INT(4),
+    	t_casetas INT(2),
+   	g_casetas FLOAT,
+    	n_personas INT(2),
+    	t_hotel FLOAT,
+    	t_comida FLOAT,
+    	t_biaticos FLOAT,
+    	t_presupuesto FLOAT,
 	id_via int(8))
 BEGIN
     INSERT INTO presupuestos(distancia,precio_combustible,total_combustible,litros_combustible,vale_gasolina,no_vale,
                             total_casetas,gasto_casetas,no_personas,hotel,comida,total_biaticos, total_presupuesto,id_viaje)
 	VALUES(dist,precio_c,total_c,litros_c,vale_c,n_vale,t_casetas,g_casetas,n_personas,t_hotel,t_comida,t_biaticos,
 	       t_presupuesto,id_via);
+END$$
+		   
+					/* Procedimiento para insertar REVISION INICIAL  */
+DELIMITER $$
+CREATE PROCEDURE insert_revision(
+	IN aceite_m VARCHAR(15), 
+	IN aceite_t VARCHAR(15), 
+	IN anti VARCHAR(15),
+	IN liquido_fre VARCHAR(15),
+	IN llanta TINYINT(4),
+	IN llave TINYINT(4),
+	IN veri TINYINT(4),
+	IN poliza TINYINT(4),
+	IN gato TINYINT(4),
+    	IN cin INT(2),	
+	IN mat INT(2),
+	IN cob INT(2),
+	IN col INT(2),
+	IN ram INT(2),
+	IN limpieza VARCHAR(10),
+	IN nivel FLOAT,
+	IN obs VARCHAR(100),
+	IN foto_f VARCHAR(255),
+	IN foto_t VARCHAR(255),
+	IN foto_i VARCHAR(255),
+	IN foto_d VARCHAR(255),
+	IN id_via int(8))
+BEGIN
+    INSERT INTO presupuestos(aceite_motor,aceite_transmision,anticongelante,liquido_frenos,llanta_refaccion,llave_ruedas,
+                            verificacion,poliza_seguro,gato,cinchos,matracas,cobijas,colchones,rampas,limpieza_vehiculo,
+			     nivel_gasolina_ida,observaciones,foto_frontal,foto_trasera,foto_izquierda,foto_derecha,id_viaje)
+	VALUES(aceite_m,aceite_t,anti,liquido_fre,llanta,llave,veri,poliza,gato,cin,mat,cob,col,ram,limpieza,nivel,obs,foto_f,
+	       foto_t,foto_i,foto_d,id_via);
 END$$

@@ -41,3 +41,22 @@ CREATE PROCEDURE select_rendimiento(id INT(8))
 BEGIN
 SELECT rendimiento FROM vehiculos WHERE id_vehiculo = id;
 END $$  
+
+				/*Procedimiento para datos de revision final*/
+DELIMITER $$
+CREATE PROCEDURE select_revision_final(
+idViaje INT(8))
+    
+BEGIN
+	SELECT FECHA_SALIDA,MODELO_VEHICULO,CONDUCTOR,ID FROM vista_viajes WHERE ID = idViaje;
+END $$
+DELIMITER ;
+
+				/*Procedimiento para seleccionar kilometraje del vehiculo */
+DELIMITER $$                                                                
+CREATE PROCEDURE select_kilometraje(
+ IN idVehiculo INT(4))
+BEGIN
+SELECT kilometraje FROM vehiculos WHERE id_vehiculo = idVehiculo;
+END $$  
+DELIMITER ;

@@ -62,7 +62,7 @@ CREATE PROCEDURE insert_presupuesto(
 	total_c FLOAT,       
 	litros_C FLOAT,
     	vale_c TINYINT(4),
-    	n_vale INT(4),
+    	n_vale VARCHAR(10),
     	t_casetas INT(2),
    	g_casetas FLOAT,
     	n_personas INT(2),

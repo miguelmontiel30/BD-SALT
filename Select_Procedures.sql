@@ -71,3 +71,13 @@ CREATE PROCEDURE select_travel_detail(
 BEGIN
 	SELECT * FROM vista_detalle_viaje WHERE id_viaje = id_travel;
 END $$  
+			 
+			 
+				/* Procedimiento para seleccionar los datos del presupuesto */
+			 
+DELIMITER $$                                                                
+CREATE PROCEDURE select_presupuesto(
+	IN id_travel INT(8))
+BEGIN
+	SELECT * FROM presupuestos WHERE id_viaje = id_travel;
+END $$  

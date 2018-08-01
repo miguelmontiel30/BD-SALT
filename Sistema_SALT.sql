@@ -115,10 +115,10 @@ FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));
                                     
 CREATE TABLE revision_vehiculo(
 id_revision INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
-aceite_motor VARCHAR(15) NOT NULL,
-aceite_transmision VARCHAR(15) NOT NULL,
-anticongelante VARCHAR(15) NOT NULL,
-liquido_frenos VARCHAR(15) NOT NULL,
+aceite_motor VARCHAR(25) NOT NULL,
+aceite_transmision VARCHAR(25) NOT NULL,
+anticongelante VARCHAR(25) NOT NULL,
+liquido_frenos VARCHAR(25) NOT NULL,
 llanta_refaccion TINYINT NOT NULL,
 llave_ruedas TINYINT NOT NULL,
 verificacion TINYINT NOT NULL,

@@ -30,7 +30,7 @@ END $$
                                                                 
                       /* Procedimiento para cargar los viajes Iniciados */
 DELIMITER $$                                                                
-CREATE PROCEDURE select_viajes()
+CREATE PROCEDURE select_vista_viajes()
 BEGIN
 SELECT * FROM viajes WHERE estado_viaje = 'Iniciado' 
 	OR ESTADO_VIAJE = 'Presupuestado' 

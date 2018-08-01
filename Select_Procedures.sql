@@ -60,3 +60,12 @@ BEGIN
 SELECT kilometraje FROM vehiculos WHERE id_vehiculo = idVehiculo;
 END $$  
 DELIMITER ;
+		   
+		   
+				   /* Procedimiento para seleccionar los datos para el detalle de viaje */
+DELIMITER $$                                                                
+CREATE PROCEDURE select_travel_detail(
+	IN id_travel INT(8))
+BEGIN
+	SELECT * FROM vista_detalle_viaje WHERE id_viaje = id_travel;
+END $$  

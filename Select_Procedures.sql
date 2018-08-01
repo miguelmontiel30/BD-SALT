@@ -30,11 +30,11 @@ END $$
                                                                 
                       /* Procedimiento para cargar los viajes Iniciados */
 DELIMITER $$                                                                
-CREATE PROCEDURE select_travels()
+CREATE PROCEDURE select_viajes()
 BEGIN
 SELECT * FROM viajes WHERE estado_viaje = 'Iniciado' 
 	OR ESTADO_VIAJE = 'Presupuestado' 
-    	OR ESTADO_VIAJE = 'Primera revisión';;
+    	OR ESTADO_VIAJE = 'Primera revisión';
 END $$   
                                                                 
                       /* Procedimiento para el rendimiento del vehiculo */

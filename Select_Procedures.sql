@@ -32,7 +32,9 @@ END $$
 DELIMITER $$                                                                
 CREATE PROCEDURE select_travels()
 BEGIN
-SELECT * FROM viajes WHERE estado_viaje = 'Iniciado';
+SELECT * FROM viajes WHERE estado_viaje = 'Iniciado' 
+	OR ESTADO_VIAJE = 'Presupuestado' 
+    	OR ESTADO_VIAJE = 'Primera revisión';;
 END $$   
                                                                 
                       /* Procedimiento para el rendimiento del vehiculo */

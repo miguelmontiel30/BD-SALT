@@ -81,3 +81,13 @@ CREATE PROCEDURE select_presupuesto(
 BEGIN
 	SELECT * FROM presupuestos WHERE id_viaje = id_travel;
 END $$  
+
+			 
+				/* Procedimiento para seleccionar los datos de un solo vehículo */
+			 
+DELIMITER $$                                                                
+CREATE PROCEDURE select_vehiculo(
+	IN id_carro INT(8))
+BEGIN
+	SELECT * FROM vehiculos WHERE id_vehiculo = id_carro;
+END $$  

@@ -15,7 +15,7 @@ AS SELECT viajes.id_viaje AS 'ID', viajes.fecha_salida AS 'FECHA_SALIDA', viajes
 CREATE OR REPLACE VIEW vista_detalle_viaje
 AS SELECT viajes.id_viaje, viajes.fecha_salida, viajes.destino, viajes.motivo, 
 	viajes.observaciones, vehiculos.marca, vehiculos.modelo, vehiculos.placa,
-	vehiculos.capacidad_tanque, vehiculos.rendimiento, vehiculos.vigencia_tarjeta,
+	vehiculos.rendimiento, vehiculos.vigencia_tarjeta,
 	vehiculos.kilometraje, usuarios.nombre
 	FROM viajes
 	INNER JOIN vehiculos

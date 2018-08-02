@@ -104,7 +104,7 @@ CREATE PROCEDURE insert_revision(
 	IN foto_d VARCHAR(255),
 	IN id_via int(8))
 BEGIN
-    INSERT INTO presupuestos(aceite_motor,aceite_transmision,anticongelante,liquido_frenos,llanta_refaccion,llave_ruedas,
+    INSERT INTO revision_vehiculo(aceite_motor,aceite_transmision,anticongelante,liquido_frenos,llanta_refaccion,llave_ruedas,
                             verificacion,poliza_seguro,gato,cinchos,matracas,cobijas,colchones,rampas,limpieza_vehiculo,
 			     nivel_gasolina_ida,observaciones,foto_frontal,foto_trasera,foto_izquierda,foto_derecha,id_viaje)
 	VALUES(aceite_m,aceite_t,anti,liquido_fre,llanta,llave,veri,poliza,gato,cin,mat,cob,col,ram,limpieza,nivel,obs,foto_f,

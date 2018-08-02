@@ -34,7 +34,7 @@ CREATE PROCEDURE select_vista_viajes()
 BEGIN
 SELECT * FROM viajes WHERE estado_viaje = 'Iniciado' 
 	OR ESTADO_VIAJE = 'Presupuestado' 
-    	OR ESTADO_VIAJE = 'Primera revisión';
+    	OR ESTADO_VIAJE = 'Primera revision';
 END $$   
                                                                 
                       /* Procedimiento para el rendimiento del vehiculo */

@@ -91,3 +91,13 @@ CREATE PROCEDURE select_vehiculo(
 BEGIN
 	SELECT * FROM vehiculos WHERE id_vehiculo = id_carro;
 END $$  
+			
+			
+			/* Procedimiento para seleccionar los datos de la primera revisión de vehículo */
+			 
+DELIMITER $$                                                                
+CREATE PROCEDURE select_primera_revision(
+	IN id_travel INT(8))
+BEGIN
+	SELECT * FROM revision_vehiculo WHERE id_viaje = id_travel;
+END $$  

@@ -101,3 +101,13 @@ CREATE PROCEDURE select_primera_revision(
 BEGIN
 	SELECT * FROM revision_vehiculo WHERE id_viaje = id_travel;
 END $$  
+
+			 
+			 /* Procedimiento para seleccionar los datos de la segunda revisión de vehículo */
+			 
+DELIMITER $$                                                                
+CREATE PROCEDURE select_segunda_revision(
+	IN id_travel INT(8))
+BEGIN
+	SELECT * FROM revision_final WHERE id_viaje = id_travel;
+END $$  

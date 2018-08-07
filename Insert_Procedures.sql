@@ -81,10 +81,10 @@ END$$
 					/* Procedimiento para insertar REVISION INICIAL  */
 DELIMITER $$
 CREATE PROCEDURE insert_revision(
-	IN aceite_m VARCHAR(15), 
-	IN aceite_t VARCHAR(15), 
-	IN anti VARCHAR(15),
-	IN liquido_fre VARCHAR(15),
+	IN aceite_m VARCHAR(25), 
+	IN aceite_t VARCHAR(25), 
+	IN anti VARCHAR(25),
+	IN liquido_fre VARCHAR(25),
 	IN llanta TINYINT(4),
 	IN llave TINYINT(4),
 	IN veri TINYINT(4),

@@ -111,3 +111,41 @@ BEGIN
 	VALUES(aceite_m,aceite_t,anti,liquido_fre,llanta,llave,veri,poliza,gato,tarjeta,cin,mat,cob,col,ram,limpieza,nivel,obs,foto_f,
 	       foto_t,foto_i,foto_d,id_via);
 END$$
+
+
+					/* Procedimiento para insertar REVISION FINAL  */
+DELIMITER $$
+CREATE PROCEDURE insert_revision(
+	IN fecha DATE,
+	IN kilometros_e INT (10),
+	IN kilometros_t INT(10),
+	IN aceite_m VARCHAR(25), 
+	IN aceite_t VARCHAR(25), 
+	IN anti VARCHAR(25),
+	IN liquido_fre VARCHAR(25),
+	IN llanta TINYINT(4),
+	IN llave TINYINT(4),
+	IN veri TINYINT(4),
+	IN poliza TINYINT(4),
+	IN gato TINYINT(4),
+	IN tarjeta TINYINT(4),
+    	IN cin INT(2),	
+	IN mat INT(2),
+	IN cob INT(2),
+	IN col INT(2),
+	IN ram INT(2),
+	IN limpieza VARCHAR(10),
+	IN nivel FLOAT,
+	IN obs VARCHAR(100),
+	IN foto_f VARCHAR(255),
+	IN foto_t VARCHAR(255),
+	IN foto_i VARCHAR(255),
+	IN foto_d VARCHAR(255),
+	IN id_via int(8))
+BEGIN
+    INSERT INTO revision_vehiculo(fecha_llegada, kilometros_entrada, total_km_recorridos, aceite_motor,aceite_transmision,anticongelante,liquido_frenos,llanta_refaccion,llave_ruedas,
+                            verificacion,poliza_seguro,gato,tarjeta_circulacion,cinchos,matracas,cobijas,colchones,rampas,limpieza_vehiculo,
+			     nivel_gasolina_ida,observaciones,foto_frontal,foto_trasera,foto_izquierda,foto_derecha,id_viaje)
+	VALUES(fecha,kilometros_e,kilometros_t,aceite_m,aceite_t,anti,liquido_fre,llanta,llave,veri,poliza,gato,tarjeta,cin,mat,cob,col,ram,limpieza,nivel,obs,foto_f,
+	       foto_t,foto_i,foto_d,id_via);
+END$$

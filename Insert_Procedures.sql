@@ -149,3 +149,22 @@ BEGIN
 	VALUES(fecha,kilometros_e,kilometros_t,aceite_m,aceite_t,anti,liquido_fre,llanta,llave,veri,poliza,gato,tarjeta,cin,mat,cob,col,ram,limpieza,nivel,obs,foto_f,
 	       foto_t,foto_i,foto_d,id_via);
 END$$
+		      
+		      
+		      
+		      			/* Procedimiento para insertar verificaciones */
+DELIMITER $$
+CREATE PROCEDURE insert_verificacion(
+    IN 	f_veri date, 
+       	prov varchar(25),
+       	imp FLOAT,
+		id_us int(4),
+		des VARCHAR(50),
+		foto VARCHAR(50),
+		proxima DATE,
+		id_ve int(4))
+BEGIN
+    INSERT INTO verificaciones(fecha_verificacion, proveedor, importe, id_usuario,
+		       descripcion, foto_factura, proxima_fecha, id_vehiculo)
+    VALUES(f_veri,prov,imp,id_us,des,foto,proxima,id_ve);
+END$$

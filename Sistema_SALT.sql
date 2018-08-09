@@ -40,13 +40,14 @@ CREATE TABLE verificaciones(
 id_verificacion INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY, 
 fecha_verificacion DATE NOT NULL,
 proveedor VARCHAR(25) NOT NULL,
-importe DOUBLE(4,2) NOT NULL,
-encargado VARCHAR(25) NULL,
+importe FLOAT NOT NULL,
+id_usuario INT(4) ZEROFILL NOT NULL,
 descripcion VARCHAR(50) NULL,
 foto_factura MEDIUMBLOB NULL,
 proxima_fecha DATE NOT NULL,
 id_vehiculo INT(4) ZEROFILL NOT NULL,
-FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo)); 
+FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo),
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)); 
 
 
 									/* Creación de la tabla mantenimientos */

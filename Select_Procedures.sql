@@ -111,3 +111,16 @@ CREATE PROCEDURE select_segunda_revision(
 BEGIN
 	SELECT * FROM revision_final WHERE id_viaje = id_travel;
 END $$  
+			 
+			/* Procedimiento para cargar las verificaciones de los vehiculos */			 
+DELIMITER $$                                                                
+CREATE PROCEDURE select_verificaciones(
+	IN id_carro INT(4))
+BEGIN
+	SELECT verificaciones.foto_factura, verificaciones.fecha_verificacion,
+		verificaciones.proveedor, verificaciones.importe, verificaciones.descripcion, usuarios.nombre
+	FROM verificaciones  
+	INNER JOIN usuarios
+  	ON usuarios.id_usuario = verificaciones.id_usuario
+    WHERE id_vehiculo = id_carro;
+END $$  

@@ -159,7 +159,7 @@ CREATE PROCEDURE insert_verificacion(
        	prov varchar(25),
        	imp FLOAT,
 		id_us int(4),
-		des VARCHAR(50),
+		des VARCHAR(100),
 		foto VARCHAR(50),
 		proxima DATE,
 		id_ve int(4))

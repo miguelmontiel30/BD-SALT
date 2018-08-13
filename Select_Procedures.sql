@@ -124,3 +124,40 @@ BEGIN
   	ON usuarios.id_usuario = verificaciones.id_usuario
     WHERE id_vehiculo = id_carro;
 END $$  
+
+				/*Procedimineto para cargar la tabla de seguro */
+
+DELIMITER $$
+CREATE PROCEDURE select_seguro(
+	IN idVehiculo INT(4))
+BEGIN
+	SELECT no_poliza, aseguradora,fecha_pago,fecha_registro,foto_poliza,monto_total,periodo_pago,modelo
+    FROM seguro
+    INNER JOIN vehiculos on vehiculos.id_vehiculo = seguro.id_vehiculo where vehiculos.id_vehiculo = idVehiculo;
+END $$
+DELIMITER ;
+
+				/*Procedimiento para mostrar la proxima fecha */
+DELIMITER $$
+CREATE procedure select_fecha(
+	IN cadena VARCHAR(25),
+    IN IdVehiculo INT(4))
+BEGIN
+
+IF strcmp(cadena, 'Mensual') = 0 THEN
+SELECT DATE_ADD(fecha_pago, INTERVAL 1 MONTH) AS proximo_pago FROM seguro WHERE id_vehiculo = idVehiculo;
+END IF;
+
+IF strcmp(cadena, 'Anual') = 0 THEN
+SELECT DATE_ADD(fecha_pago, INTERVAL 1 YEAR) AS proximo_pago FROM seguro WHERE id_vehiculo = idVehiculo;
+END IF;
+
+IF strcmp(cadena, 'Trimestral') = 0 THEN
+SELECT DATE_ADD(fecha_pago, INTERVAL 3 MONTH) AS proximo_pago FROM seguro WHERE id_vehiculo = idVehiculo;
+END IF;
+
+IF strcmp(cadena, 'Semestral') = 0 THEN
+SELECT DATE_ADD(fecha_pago, INTERVAL 6 MONTH) AS proximo_pago FROM seguro WHERE id_vehiculo = idVehiculo;
+END IF;
+END $$
+DELIMITER ;

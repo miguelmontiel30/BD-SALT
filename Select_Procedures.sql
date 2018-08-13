@@ -161,3 +161,42 @@ SELECT DATE_ADD(fecha_pago, INTERVAL 6 MONTH) AS proximo_pago FROM seguro WHERE 
 END IF;
 END $$
 DELIMITER ;
+		
+		      
+		      		/* Procedimiento para cargar el número de verificaciones del vehiculo*/
+DELIMITER $$
+CREATE procedure select_no_verificaciones(
+	IN ID INT(4))
+BEGIN		      
+select count(*) AS no_verificaciones from verificaciones
+  where id_vehiculo = ID;
+END $$		  
+		  
+		  
+		  	/* Procedimiento para cargar el gasto invertido en verificaciones del vehiculo*/
+DELIMITER $$
+CREATE procedure select_gasto_verificaciones(
+	IN ID INT(4))
+BEGIN		      
+SELECT SUM(importe) as gasto FROM verificaciones WHERE id_vehiculo = ID;
+END $$		  
+		  
+		  
+		  	/* Procedimiento para cargar la próxima fecha de verificacion del vehiculo */
+DELIMITER $$
+CREATE procedure select_proxima_verificacion(
+	IN ID INT(4))
+BEGIN		      
+SELECT proxima_fecha, DATEDIFF(CURDATE(), fecha_verificacion) as dias from verificaciones WHERE id_vehiculo = ID order by proxima_fecha ASC LIMIT 1;
+END $$		
+		
+		  
+		  /* Procedimiento para cargar los días trancurridos tras la ultima verificacion del vehiculo */
+DELIMITER $$
+CREATE procedure select_dias_verificacion(	
+	IN FECHA DATE)
+BEGIN		      
+SELECT DATEDIFF(CURDATE(), FECHA)*-1 as dias;
+END $$		
+		  
+	

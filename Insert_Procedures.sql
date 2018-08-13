@@ -168,3 +168,19 @@ BEGIN
 		       descripcion, foto_factura, proxima_fecha, id_vehiculo)
     VALUES(f_veri,prov,imp,id_us,des,foto,proxima,id_ve);
 END$$
+
+
+				/* Procedimiento para insertar seguros*/
+DELIMITER $$
+CREATE PROCEDURE insert_seguro(
+	IN poliza INT(4),
+    IN seguro VARCHAR(35),
+    IN periodo VARCHAR(25),
+    IN fecha DATE,
+    IN fotoPoliza VARCHAR(255),
+    IN idVehiculo INT(4))
+BEGIN
+	INSERT INTO seguro(no_poliza,aseguradora,fecha_pago,periodo_pago,fecha_registro,foto_poliza,foto_recibo,id_vehiculo,monto_total)
+    VALUES(poliza,seguro,null,periodo,fecha,fotoPoliza,null,idVehiculo,null);
+END $$
+DELIMITER ;

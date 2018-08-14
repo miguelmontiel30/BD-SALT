@@ -217,6 +217,52 @@ DECLARE anio INT;
 SELECT Date_format(CURDATE(), '%m') INTO @mes;
 SELECT Date_format(CURDATE(), '%Y') INTO @anio;
 SELECT COUNT(*) AS viajes FROM viajes WHERE estado_viaje <> 'Eliminado' AND MONTH(fecha_salida) = @mes AND YEAR(fecha_salida) = @anio ;
-END$$		  
+END$$		
 		  
+		  
+		  		   /* Procedimiento para cargar total de usuarios en el sistema */
+DELIMITER $$
+CREATE procedure select_no_users()
+BEGIN		      
+SELECT COUNT(*) AS no_usuarios FROM usuarios WHERE estado_usuario = 'Activo';
+END $$
+		  
+		  		
+		  		/* Procedimiento para cargar total de vehiculos en el sistema */
+DELIMITER $$
+CREATE procedure select_no_vehiculos()
+BEGIN		      
+SELECT COUNT(*) AS no_vehiculos FROM vehiculos WHERE estado_vehiculo = 'Activo';
+END $$
+		  
+		  
+		  	/* Procedimiento para cargar total de viajes registrados en el sistema */
+DELIMITER $$
+CREATE procedure select_no_viajes()
+BEGIN		      
+SELECT COUNT(*) AS no_viajes FROM viajes WHERE estado_viaje <> 'Eliminado';
+END $$
 	
+		  
+	  		  /* Procedimiento para cargar total de gasto en verificaciones */
+DELIMITER $$
+CREATE procedure select_gasto_veri()
+BEGIN		      
+SELECT SUM(importe) AS gasto FROM verificaciones;
+END $$
+		  
+		  
+		  	  /* Procedimiento para cargar total de gasto en mantenimientos */
+DELIMITER $$
+CREATE procedure select_gasto_man()
+BEGIN		      
+SELECT SUM(importe) AS gasto FROM mantenimientos;
+END $$
+	
+		  
+		  	/* Procedimiento para cargar total de gasto en seguros */
+DELIMITER $$
+CREATE procedure select_gasto_seg()
+BEGIN		      
+SELECT SUM(monto_total) AS gasto FROM seguros;
+END $$

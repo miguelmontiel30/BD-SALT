@@ -73,7 +73,8 @@ nombre VARCHAR(25) NOT NULL,
 apellido VARCHAR(25) NOT NULL,
 rol VARCHAR(15) NOT NULL,
 contrasenia VARCHAR(20) NOT NULL,
-foto_perfil MEDIUMBLOB NULL);                                                         
+foto_perfil MEDIUMBLOB NULL),
+estado_usuario VARCHAR(25) NULL DEFAULT 'Activo';                                                         
                                     
                                     
 									/* Creación de la tabla viajes */

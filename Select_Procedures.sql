@@ -200,3 +200,21 @@ SELECT DATEDIFF(CURDATE(), FECHA)*-1 as dias;
 END $$		
 		  
 	
+		   /* Procedimiento para cargar los viajes en transcurso */
+DELIMITER $$
+CREATE procedure select_viajes_transcurso()
+BEGIN		      
+SELECT COUNT(*) AS viajes FROM viajes WHERE estado_viaje NOT IN('Eliminado','FINALIZADO');
+END $$	
+	
+		  
+		  /* Procedimiento para cargar el número de viajes que se han realizado en el mes */
+DELIMITER $$
+CREATE procedure select_viajes_transcurso()
+BEGIN		      
+SELECT Date_format(CURDATE(), '%m') INTO @mes;
+SELECT Date_format(CURDATE(), '%y') INTO @anio;
+SELECT COUNT(*) AS viajes FROM viajes WHERE estado_viaje <> 'Eliminado' AND MONTH(fecha_salida) = @mes AND YEAR(fecha_salida) = @anio ;
+END$$		  
+		  
+	

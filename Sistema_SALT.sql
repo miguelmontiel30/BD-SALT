@@ -56,7 +56,8 @@ CREATE TABLE proveedores(
 id_proveedor INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
 nombre VARCHAR(30) NOT NULL,
 direccion VARCHAR(60) NULL,
-telefono INT(20) NULL);					     
+telefono INT(20) NULL,
+estado VARCHAR(25) NULL DEFAULT 'Activo');					     
 					     
 					     
 					     

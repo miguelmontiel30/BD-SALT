@@ -1,7 +1,7 @@
 CREATE DATABASE SALT;
 USE SALT;
 
-									/* Creación de la tabla Vehículos */
+					/* Creación de la tabla Vehículos */
                                     
 CREATE TABLE vehiculos(
 id_vehiculo INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -50,7 +50,18 @@ FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo),
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)); 
 
 
-									/* Creación de la tabla mantenimientos */
+					     
+					     /* CREACION DE TABLA PROVEEDORES */
+CREATE TABLE proveedores(
+id_proveedor INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+nombre VARCHAR(30) NOT NULL,
+direccion VARCHAR(60) NULL,
+telefono INT(20) NULL);					     
+					     
+					     
+					     
+					     
+						/* Creación de la tabla mantenimientos */
                                     
 CREATE TABLE mantenimientos(
 id_manteniento INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -62,7 +73,9 @@ estado_llantas VARCHAR(20) NOT NULL,
 descripcion VARCHAR(50) NOT NULL,
 foto_factura MEDIUMBLOB NULL,
 id_vehiculo INT(4) ZEROFILL NOT NULL,
-FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo));                 
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo),
+FOREIGN KEY (id_id_proveedor) REFERENCES proveedores(id_proveedor));                 
 
 
 									/* Creación de la tabla usuarios */

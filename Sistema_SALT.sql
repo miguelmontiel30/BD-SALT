@@ -73,9 +73,11 @@ alineacion VARCHAR(20) NOT NULL,
 estado_llantas VARCHAR(20) NOT NULL,
 descripcion VARCHAR(50) NOT NULL,
 foto_factura MEDIUMBLOB NULL,
+id_usuario INT(4) ZEROFILL NOT NULL,
 id_vehiculo INT(4) ZEROFILL NOT NULL,
 id_proveedor INT(4) ZEROFILL NOT NULL,
 FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo),
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
 FOREIGN KEY (id_id_proveedor) REFERENCES proveedores(id_proveedor));                 
 
 
@@ -189,7 +191,7 @@ id_viaje INT(8) ZEROFILL NOT NULL,
 FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));
                                     
 
-									/* Creación de la tabla factura_gasolina */                                    
+							/* Creación de la tabla factura_gasolina */                                    
                                     
 CREATE TABLE factura_gasolina(
 id_factura INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -216,7 +218,7 @@ id_viaje INT(8) ZEROFILL NOT NULL,
 FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));                                        
 
 
-									/* Creación de la tabla biaticos_extra */                                                                        
+					/* Creación de la tabla biaticos_extra */                                                                        
 
 CREATE TABLE biaticos_extra(
 id_biatico INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -225,7 +227,7 @@ concepto VARCHAR(20) NOT NULL,
 importe FLOAT(4,2) NOT NULL,
 observaciones VARCHAR(50) NULL,
 id_viaje INT(8) ZEROFILL NOT NULL,
-FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));                                        
+FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));                                        					 												 
                                     
                                     
                                     

@@ -184,3 +184,16 @@ BEGIN
     VALUES(poliza,seguro,null,periodo,fecha,fotoPoliza,null,idVehiculo,null);
 END $$
 DELIMITER ;
+		      
+		      
+		      				/* Procedimiento para insertar proveedores */
+DELIMITER $$
+CREATE PROCEDURE insert_proveedor(
+    IN name VARCHAR(30),
+    IN dir VARCHAR(60),
+    IN tel VARCHAR(20))
+BEGIN
+    INSERT INTO proveedores(nombre,direccion,telefono)
+    VALUES(name,dir,tel);
+END $$
+

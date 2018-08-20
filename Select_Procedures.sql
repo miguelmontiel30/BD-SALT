@@ -161,3 +161,116 @@ SELECT DATE_ADD(fecha_pago, INTERVAL 6 MONTH) AS proximo_pago FROM seguro WHERE 
 END IF;
 END $$
 DELIMITER ;
+		
+		      
+		      		/* Procedimiento para cargar el número de verificaciones del vehiculo*/
+DELIMITER $$
+CREATE procedure select_no_verificaciones(
+	IN ID INT(4))
+BEGIN		      
+select count(*) AS no_verificaciones from verificaciones
+  where id_vehiculo = ID;
+END $$		  
+		  
+		  
+		  	/* Procedimiento para cargar el gasto invertido en verificaciones del vehiculo*/
+DELIMITER $$
+CREATE procedure select_gasto_verificaciones(
+	IN ID INT(4))
+BEGIN		      
+SELECT SUM(importe) as gasto FROM verificaciones WHERE id_vehiculo = ID;
+END $$		  
+		  
+		  
+		  	/* Procedimiento para cargar la próxima fecha de verificacion del vehiculo */
+DELIMITER $$
+CREATE procedure select_proxima_verificacion(
+	IN ID INT(4))
+BEGIN		      
+SELECT proxima_fecha, DATEDIFF(CURDATE(), fecha_verificacion) as dias from verificaciones WHERE id_vehiculo = ID order by proxima_fecha ASC LIMIT 1;
+END $$		
+		
+		  
+		  /* Procedimiento para cargar los días trancurridos tras la ultima verificacion del vehiculo */
+DELIMITER $$
+CREATE procedure select_dias_verificacion(	
+	IN FECHA DATE)
+BEGIN		      
+SELECT DATEDIFF(CURDATE(), FECHA)*-1 as dias;
+END $$		
+		  
+	
+		   /* Procedimiento para cargar los viajes en transcurso */
+DELIMITER $$
+CREATE procedure select_viajes_transcurso()
+BEGIN		      
+SELECT COUNT(*) AS viajes FROM viajes WHERE estado_viaje NOT IN('Eliminado','FINALIZADO');
+END $$	
+	
+		  
+		  /* Procedimiento para cargar el número de viajes que se han realizado en el mes */
+DELIMITER $$
+CREATE procedure select_viajes_transcurso()
+BEGIN		
+DECLARE mes INT;		  
+DECLARE anio INT;		  
+SELECT Date_format(CURDATE(), '%m') INTO @mes;
+SELECT Date_format(CURDATE(), '%Y') INTO @anio;
+SELECT COUNT(*) AS viajes FROM viajes WHERE estado_viaje <> 'Eliminado' AND MONTH(fecha_salida) = @mes AND YEAR(fecha_salida) = @anio ;
+END$$		
+		  
+		  
+		  		   /* Procedimiento para cargar total de usuarios en el sistema */
+DELIMITER $$
+CREATE procedure select_no_users()
+BEGIN		      
+SELECT COUNT(*) AS no_usuarios FROM usuarios WHERE estado_usuario = 'Activo';
+END $$
+		  
+		  		
+		  		/* Procedimiento para cargar total de vehiculos en el sistema */
+DELIMITER $$
+CREATE procedure select_no_vehiculos()
+BEGIN		      
+SELECT COUNT(*) AS no_vehiculos FROM vehiculos WHERE estado_vehiculo = 'Activo';
+END $$
+		  
+		  
+		  	/* Procedimiento para cargar total de viajes registrados en el sistema */
+DELIMITER $$
+CREATE procedure select_no_viajes()
+BEGIN		      
+SELECT COUNT(*) AS no_viajes FROM viajes WHERE estado_viaje <> 'Eliminado';
+END $$
+	
+		  
+	  		  /* Procedimiento para cargar total de gasto en verificaciones */
+DELIMITER $$
+CREATE procedure select_gasto_veri()
+BEGIN		      
+SELECT SUM(importe) AS gasto FROM verificaciones;
+END $$
+		  
+		  
+		  	  /* Procedimiento para cargar total de gasto en mantenimientos */
+DELIMITER $$
+CREATE procedure select_gasto_man()
+BEGIN		      
+SELECT SUM(importe) AS gasto FROM mantenimientos;
+END $$
+	
+		  
+		  	/* Procedimiento para cargar total de gasto en seguros */
+DELIMITER $$
+CREATE procedure select_gasto_seg()
+BEGIN		      
+SELECT SUM(monto_total) AS gasto FROM seguros;
+END $$
+		  
+		  
+		  		  /* Procedimiento para cargar los días faltantes para las proximas verificaciones */
+DELIMITER $$
+CREATE procedure select_proximas_verificaciones()
+BEGIN		      
+SELECT * FROM vista_proximas_verificaciones WHERE dias_restantes BETWEEN 0 AND 40;
+END $$

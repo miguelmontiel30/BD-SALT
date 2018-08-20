@@ -1,7 +1,7 @@
 CREATE DATABASE SALT;
 USE SALT;
 
-									/* Creación de la tabla Vehículos */
+					/* Creación de la tabla Vehículos */
                                     
 CREATE TABLE vehiculos(
 id_vehiculo INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -50,7 +50,19 @@ FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo),
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)); 
 
 
-									/* Creación de la tabla mantenimientos */
+					     
+					     /* CREACION DE TABLA PROVEEDORES */
+CREATE TABLE proveedores(
+id_proveedor INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+nombre VARCHAR(30) NOT NULL,
+direccion VARCHAR(60) NULL,
+telefono INT(20) NULL,
+estado VARCHAR(25) NULL DEFAULT 'Activo');					     
+					     
+					     
+					     
+					     
+						/* Creación de la tabla mantenimientos */
                                     
 CREATE TABLE mantenimientos(
 id_manteniento INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -61,8 +73,12 @@ alineacion VARCHAR(20) NOT NULL,
 estado_llantas VARCHAR(20) NOT NULL,
 descripcion VARCHAR(50) NOT NULL,
 foto_factura MEDIUMBLOB NULL,
+id_usuario INT(4) ZEROFILL NOT NULL,
 id_vehiculo INT(4) ZEROFILL NOT NULL,
-FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo));                 
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo),
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+FOREIGN KEY (id_id_proveedor) REFERENCES proveedores(id_proveedor));                 
 
 
 									/* Creación de la tabla usuarios */
@@ -73,7 +89,8 @@ nombre VARCHAR(25) NOT NULL,
 apellido VARCHAR(25) NOT NULL,
 rol VARCHAR(15) NOT NULL,
 contrasenia VARCHAR(20) NOT NULL,
-foto_perfil MEDIUMBLOB NULL);                                                         
+foto_perfil MEDIUMBLOB NULL),
+estado_usuario VARCHAR(25) NULL DEFAULT 'Activo';                                                         
                                     
                                     
 									/* Creación de la tabla viajes */
@@ -174,7 +191,7 @@ id_viaje INT(8) ZEROFILL NOT NULL,
 FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));
                                     
 
-									/* Creación de la tabla factura_gasolina */                                    
+							/* Creación de la tabla factura_gasolina */                                    
                                     
 CREATE TABLE factura_gasolina(
 id_factura INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -201,7 +218,7 @@ id_viaje INT(8) ZEROFILL NOT NULL,
 FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));                                        
 
 
-									/* Creación de la tabla biaticos_extra */                                                                        
+					/* Creación de la tabla biaticos_extra */                                                                        
 
 CREATE TABLE biaticos_extra(
 id_biatico INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -210,7 +227,7 @@ concepto VARCHAR(20) NOT NULL,
 importe FLOAT(4,2) NOT NULL,
 observaciones VARCHAR(50) NULL,
 id_viaje INT(8) ZEROFILL NOT NULL,
-FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));                                        
+FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));                                        					 												 
                                     
                                     
                                     

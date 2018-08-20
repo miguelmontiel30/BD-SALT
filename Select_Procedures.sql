@@ -266,3 +266,11 @@ CREATE procedure select_gasto_seg()
 BEGIN		      
 SELECT SUM(monto_total) AS gasto FROM seguros;
 END $$
+		  
+		  
+		  		  /* Procedimiento para cargar los días faltantes para las proximas verificaciones */
+DELIMITER $$
+CREATE procedure select_proximas_verificaciones()
+BEGIN		      
+SELECT * FROM vista_proximas_verificaciones WHERE dias_restantes BETWEEN 0 AND 40;
+END $$

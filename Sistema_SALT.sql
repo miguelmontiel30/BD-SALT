@@ -62,7 +62,7 @@ estado VARCHAR(25) NULL DEFAULT 'Activo');
 					     
 					     
 					     
-						/* Creación de la tabla mantenimientos */
+					/* Creación de la tabla mantenimientos */
                                     
 CREATE TABLE mantenimientos(
 id_mantenimiento INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -72,7 +72,70 @@ id_usuario INT(4) ZEROFILL NOT NULL,
 id_vehiculo INT(4) ZEROFILL NOT NULL,
 FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo),
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario));                 
+					     
+					     
+					     /* CREACION DE TABLAS PARA MANTENIMIENTOS */
+					     
+CREATE TABLE aceite_filtros(
+id_aceite_filtros INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+cambio_aceite DATE NULL,
+cambio_filtro_aceite DATE NULL,
+cambio_filtro_combustible DATE NULL,
+cambio_filtro_aire DATE NULL,
+importe FLOAT NULL,
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)); 
 
+CREATE TABLE balatas(
+id_balatas INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+traseras DATE NULL,
+delanteras DATE NULL,
+importe FLOAT NULL,
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor));
+						  
+CREATE TABLE inyectores_bujias(
+id_inyectores INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+lavado_inyectores DATE NULL,
+cambio_bujias DATE NULL,
+reemplazo_cable_bujia DATE NULL,
+importe FLOAT NULL,
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)); 
+						  
+CREATE TABLE llantas(
+id_llantas INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+traseras DATE NULL,
+delanteras DATE NULL,
+importe FLOAT NULL,
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor));
+						  
+CREATE TABLE alineacion_balanceo(
+id_alineacion_balanceo INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+alineacion DATE NULL,
+balanceo DATE NULL,
+importe FLOAT NULL,
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor));
+						  
+CREATE TABLE amortiguadores(
+id_amortiguadores INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+traseras DATE NULL,
+delanteras DATE NULL,
+importe FLOAT NULL,
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor));						  
+
+CREATE TABLE otro_reemplazo(
+id_otros INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+otro_reemplazo DATE NULL,
+especificaciones_otro VARCHAR(100) NULL,	
+trabajo_extra DATE NULL,
+especificaciones_trabajo VARCHAR(100) NULL,	
+importe FLOAT NULL,
+id_proveedor INT(4) ZEROFILL NOT NULL,
+FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor));						  
 
 									/* Creación de la tabla usuarios */
                                      

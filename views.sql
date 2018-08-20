@@ -22,3 +22,12 @@ AS SELECT viajes.id_viaje, viajes.fecha_salida, viajes.destino, viajes.motivo,
   ON vehiculos.id_vehiculo = viajes.id_vehiculo
   INNER JOIN usuarios
   ON usuarios.id_usuario = viajes.id_usuario;
+
+
+CREATE OR REPLACE VIEW vista_proximas_verificaciones
+AS SELECT vehiculos.id_vehiculo, vehiculos.marca, vehiculos.modelo, verificaciones.id_verificacion,
+	  verificaciones.fecha_verificacion, DATEDIFF(verificaciones.proxima_fecha, CURDATE()) AS dias_restantes 
+	  FROM verificaciones 
+	  INNER JOIN vehiculos 
+	  ON vehiculos.id_vehiculo = verificaciones.id_vehiculo 
+	 ORDER BY proxima_fecha ASC;

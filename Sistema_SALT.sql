@@ -65,20 +65,13 @@ estado VARCHAR(25) NULL DEFAULT 'Activo');
 						/* Creación de la tabla mantenimientos */
                                     
 CREATE TABLE mantenimientos(
-id_manteniento INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+id_mantenimiento INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
 fecha_mantenimiento DATE NOT NULL,
-proveedor VARCHAR(25) NOT NULL,
-importe FLOAT(4,2) NOT NULL,
-alineacion VARCHAR(20) NOT NULL,
-estado_llantas VARCHAR(20) NOT NULL,
-descripcion VARCHAR(50) NOT NULL,
-foto_factura MEDIUMBLOB NULL,
+proximo_servicio INT(10) NOT NULL,
 id_usuario INT(4) ZEROFILL NOT NULL,
 id_vehiculo INT(4) ZEROFILL NOT NULL,
-id_proveedor INT(4) ZEROFILL NOT NULL,
 FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo),
-FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
-FOREIGN KEY (id_id_proveedor) REFERENCES proveedores(id_proveedor));                 
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario));                 
 
 
 									/* Creación de la tabla usuarios */

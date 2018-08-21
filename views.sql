@@ -31,3 +31,12 @@ AS SELECT vehiculos.id_vehiculo, vehiculos.marca, vehiculos.modelo, verificacion
 	  INNER JOIN vehiculos 
 	  ON vehiculos.id_vehiculo = verificaciones.id_vehiculo 
 	 ORDER BY proxima_fecha ASC;
+
+						      
+CREATE OR REPLACE VIEW vista_proximos_seguros
+AS SELECT vehiculos.id_vehiculo, vehiculos.marca, vehiculos.modelo, seguro.id_seguro,
+	  seguro.fecha_registro, DATE_ADD(seguro.fecha_pago, INTERVAL 1 YEAR) AS dias_restantes 
+	  FROM seguro 
+	  INNER JOIN vehiculos 
+	  ON vehiculos.id_vehiculo = seguro.id_vehiculo 
+	 ORDER BY seguro.fecha_pago ASC;

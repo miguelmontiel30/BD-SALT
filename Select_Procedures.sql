@@ -281,3 +281,11 @@ CREATE procedure select_proximos_seguros()
 BEGIN		      
 SELECT marca,modelo, DATEDIFF(proxima_fecha, NOW()) AS dias_restantes FROM vista_proximos_seguros WHERE proxima_fecha >= CURDATE();
 END $$
+
+DELIMITER $$
+CREATE PROCEDURE ultimo_seguro(
+	IN idVehiculo INT(4))
+BEGIN
+	SELECT id_seguro,fecha_pago,monto_total FROM seguro where id_vehiculo = idVehiculo ORDER BY id_seguro desc LIMIT 1;
+END $$
+DELIMITER ;

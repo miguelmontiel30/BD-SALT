@@ -274,3 +274,10 @@ CREATE procedure select_proximas_verificaciones()
 BEGIN		      
 SELECT * FROM vista_proximas_verificaciones WHERE dias_restantes BETWEEN 0 AND 40;
 END $$
+		  
+		  	 /* Procedimiento para cargar los días faltantes para las proximos pagos de seguro */
+DELIMITER $$
+CREATE procedure select_proximos_seguros()
+BEGIN		      
+SELECT marca,modelo, DATEDIFF(proxima_fecha, NOW()) AS dias_restantes FROM vista_proximos_seguros WHERE proxima_fecha >= NOW();
+END $$

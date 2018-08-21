@@ -40,3 +40,13 @@ AS SELECT vehiculos.id_vehiculo, vehiculos.marca, vehiculos.modelo, seguro.id_se
 	  INNER JOIN vehiculos 
 	  ON vehiculos.id_vehiculo = seguro.id_vehiculo 
 	 ORDER BY seguro.fecha_pago ASC;
+						      
+						      
+CREATE OR REPLACE VIEW vista_pendientes
+AS SELECT viajes.id_viaje, viajes.destino, pendientes.pendiente 
+	FROM pendientes  
+	INNER JOIN viajes 
+	ON viajes.id_viaje = pendientes.id_viaje
+	WHERE pendientes.estado <> 'Solucionado';						     
+						      
+						      

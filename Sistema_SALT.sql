@@ -61,9 +61,18 @@ id_proveedor INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
 nombre VARCHAR(30) NOT NULL,
 direccion VARCHAR(60) NULL,
 telefono INT(20) NULL,
-estado VARCHAR(25) NULL DEFAULT 'Activo');					     
+estado VARCHAR(25) NULL DEFAULT 'Activo');	
 					     
 					     
+					     
+					     /* CREACION DE TABLA PENDIENTES */
+CREATE TABLE pendientes(
+id_pendiente INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+pendiente VARCHAR(30) NOT NULL,
+estado_pendiente VARCHAR(30) NOT NULL,	
+estado VARCHAR(25) NULL DEFAULT 'Activo',
+id_viaje INT(8) ZEROFILL NOT NULL,
+FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));	
 					     
 					     
 					/* Creación de la tabla mantenimientos */

@@ -279,5 +279,5 @@ END $$
 DELIMITER $$
 CREATE procedure select_proximos_seguros()
 BEGIN		      
-SELECT marca,modelo, DATEDIFF(proxima_fecha, NOW()) AS dias_restantes FROM vista_proximos_seguros WHERE proxima_fecha >= NOW();
+SELECT marca,modelo, DATEDIFF(proxima_fecha, NOW()) AS dias_restantes FROM vista_proximos_seguros WHERE proxima_fecha >= CURDATE();
 END $$

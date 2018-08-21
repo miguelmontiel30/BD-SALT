@@ -59,11 +59,11 @@ END $$
 DELIMITER $$
 CREATE PROCEDURE update_seguro(
 	IN fecha DATE,
-    IN idVehiculo INT(4),
+    IN idSeguro INT(4),
     IN total INT(10),
     IN foto VARCHAR(255))
 BEGIN
-	update seguro set fecha_pago = fecha, monto_total = total, foto_recibo = foto where id_vehiculo = idVehiculo;
+	update seguro set fecha_pago = fecha, monto_total = total, foto_recibo = foto where id_seguro = idSeguro;
 END $$
 DELIMITER ;
 

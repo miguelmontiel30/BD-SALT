@@ -22,15 +22,19 @@ periodo_mantenimiento VARCHAR(20) NOT NULL,
 estado_vehiculo VARCHAR(15) NOT NULL);
 
 
-									/* Creación de la tabla seguro */
+					/* Creación de la tabla seguro */
 						
 CREATE TABLE seguro(
 id_seguro INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
 no_poliza INT(15) NOT NULL,
-aseguradora VARCHAR(20) NOT NULL,
-fecha_pago DATE NOT NULL,
-foto_poliza MEDIUMBLOB,
+aseguradora VARCHAR(35) NOT NULL,
+fecha_pago DATE NULL,
+periodo_pago VARHCHAR(25) NOT NULL,	
+fecha_registro DATE NOT NULL,	
+foto_poliza VARCHAR(50) NULL,
+foto_recibo VARCHAR(50) NULL,		
 id_vehiculo INT(4) ZEROFILL NOT NULL,
+monto_total INT(10) NULL,	
 FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo)); 
                         
 

@@ -69,7 +69,6 @@ estado VARCHAR(25) NULL DEFAULT 'Activo');
 CREATE TABLE pendientes(
 id_pendiente INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
 pendiente VARCHAR(30) NOT NULL,
-estado_pendiente VARCHAR(30) NOT NULL,	
 estado VARCHAR(25) NULL DEFAULT 'Activo',
 id_viaje INT(8) ZEROFILL NOT NULL,
 FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));	

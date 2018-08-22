@@ -43,7 +43,7 @@ AS SELECT vehiculos.id_vehiculo, vehiculos.marca, vehiculos.modelo, seguro.id_se
 						      
 						      
 CREATE OR REPLACE VIEW vista_pendientes
-AS SELECT viajes.id_viaje, viajes.destino, pendientes.pendiente 
+AS SELECT viajes.id_viaje, viajes.destino, pendientes.id_pendiente, pendientes.pendiente 
 	FROM pendientes  
 	INNER JOIN viajes 
 	ON viajes.id_viaje = pendientes.id_viaje

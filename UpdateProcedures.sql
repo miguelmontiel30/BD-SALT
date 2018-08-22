@@ -92,3 +92,12 @@ BEGIN
 	UPDATE vehiculos SET estado_vehiculo = 'Vendido' WHERE id_vehiculo = IdVehiculo;
 END $$
 DELIMITER ;
+			#Procedimiento para actualizar el estado del usuario
+
+DELIMITER $$
+CREATE PROCEDURE update_estado_usuario(
+	IN idUsuario INT(4))
+BEGIN
+	UPDATE usuarios SET estado_usuario = 'Inactivo' WHERE id_usuario = idUsuario;
+END $$
+DELIMITER ;

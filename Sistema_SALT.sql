@@ -20,22 +20,7 @@ vigencia_tarjeta DATE NOT NULL,
 kilometraje INT(8) NOT NULL,
 periodo_mantenimiento VARCHAR(20) NOT NULL,
 estado_vehiculo VARCHAR(15) NOT NULL);
-
-
-					/* Creación de la tabla seguro */
-						
-CREATE TABLE seguro(
-id_seguro INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
-no_poliza INT(15) NOT NULL,
-aseguradora VARCHAR(35) NOT NULL,
-fecha_pago DATE NULL,
-periodo_pago VARHCHAR(25) NOT NULL,	
-fecha_registro DATE NOT NULL,	
-foto_poliza VARCHAR(50) NULL,
-foto_recibo VARCHAR(50) NULL,		
-id_vehiculo INT(4) ZEROFILL NOT NULL,
-monto_total INT(10) NULL,	
-FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo)); 
+ 
                         
 
 									/* Creación de la tabla verificaciones */
@@ -292,13 +277,39 @@ CREATE TABLE biaticos_extra(
 id_biatico INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
 fecha DATE NOt NULL,
 concepto VARCHAR(20) NOT NULL,
-importe FLOAT(4,2) NOT NULL,
+importe FLOAT NOT NULL,
 observaciones VARCHAR(50) NULL,
 id_viaje INT(8) ZEROFILL NOT NULL,
-FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));                                        					 												 
-                                    
-                                    
-                                    
+FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje));           
+					 
+					 
+					 /* CREACION DE TABLA PARA REGISTRO DE */
+CREATE TABLE poliza_seguros(
+id_poliza INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+fecha_registro DATE NOT NULL,	
+aseguradora VARCHAR(25) NOT NULL,
+periodo_pago VARHCHAR(25) NOT NULL,	
+proxima_fecha_pago DATE NULL,	
+no_poliza INT(15) NOT NULL,	
+fecha_inicio DATE NOT NULL,
+fecha_termino DATE NOT NULL,	
+importe_total FLOAT NOT NULL,
+foto_poliza VARCHAR(50) NULL,	
+id_vehiculo INT(8) ZEROFILL NOT NULL,
+FOREIGN KEY (id_vehiculo) REFERENCES vehiculos(id_vehiculo));
+					       
+					 
+					/* Creación de la tabla seguro */
+						
+CREATE TABLE pago_seguro(
+id_pago_seguro INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+fecha_pago DATE NULL,
+proxima_fecha_pago DATE NULL,		
+importe FLOAT NOT NULL,		
+foto_recibo VARCHAR(50) NULL,		
+id_poliza INT(8) ZEROFILL NOT NULL,
+FOREIGN KEY (id_poliza) REFERENCES poliza_seguros(id_poliza));
+					                                           				 
                                     
                                     
                                     

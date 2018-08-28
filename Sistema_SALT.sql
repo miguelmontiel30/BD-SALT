@@ -288,7 +288,6 @@ CREATE TABLE poliza_seguros(
 id_poliza INT(8) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
 fecha_inicio DATE NOT NULL,	
 aseguradora VARCHAR(25) NOT NULL,
-periodo_pago VARHCHAR(25) NOT NULL,	
 fecha_vencimiento DATE NULL,	
 no_poliza INT(15) NOT NULL,	
 fecha_inicio DATE NOT NULL,

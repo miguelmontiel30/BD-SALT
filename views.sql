@@ -55,7 +55,7 @@ AS SELECT viajes.id_viaje, viajes.destino, pendientes.id_pendiente, pendientes.p
 CREATE OR REPLACE VIEW pagos_polizas
 AS SELECT poliza_seguros.id_poliza, poliza_seguros.fecha_inicio, poliza_seguros.aseguradora, poliza_seguros.fecha_vencimiento, poliza_seguros.no_poliza,
 poliza_seguros.importe_total, poliza_seguros.foto_poliza, poliza_seguros.id_vehiculo, pago_seguro.id_pago_seguro, pago_seguro.fecha_pago, pago_seguro.proxima_fecha_pago,
-pago_seguro.importe
+pago_seguro.importe, pago_seguro.foto_recibo
 	FROM poliza_seguros  
 	INNER JOIN pago_seguro 
 	ON pago_seguro.id_poliza = poliza_seguros.id_poliza;	

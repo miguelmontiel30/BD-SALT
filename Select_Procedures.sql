@@ -265,7 +265,7 @@ END $$
 DELIMITER $$
 CREATE procedure select_gasto_seg()
 BEGIN		      
-SELECT SUM(monto_total) AS gasto FROM seguros;
+SELECT SUM(importe) AS gasto FROM pago_seguro;
 END $$
 		  
 		  

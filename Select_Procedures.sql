@@ -136,33 +136,7 @@ BEGIN
     FROM seguro
     INNER JOIN vehiculos on vehiculos.id_vehiculo = seguro.id_vehiculo where vehiculos.id_vehiculo = idVehiculo;
 END $$
-DELIMITER ;
-
-				/*Procedimiento para mostrar la proxima fecha */
-DELIMITER $$
-CREATE procedure select_fecha(
-	IN cadena VARCHAR(25),
-    IN IdVehiculo INT(4))
-BEGIN
-
-IF strcmp(cadena, 'Mensual') = 0 THEN
-SELECT DATE_ADD(fecha_pago, INTERVAL 1 MONTH) AS proximo_pago FROM seguro WHERE id_vehiculo = idVehiculo;
-END IF;
-
-IF strcmp(cadena, 'Anual') = 0 THEN
-SELECT DATE_ADD(fecha_pago, INTERVAL 1 YEAR) AS proximo_pago FROM seguro WHERE id_vehiculo = idVehiculo;
-END IF;
-
-IF strcmp(cadena, 'Trimestral') = 0 THEN
-SELECT DATE_ADD(fecha_pago, INTERVAL 3 MONTH) AS proximo_pago FROM seguro WHERE id_vehiculo = idVehiculo;
-END IF;
-
-IF strcmp(cadena, 'Semestral') = 0 THEN
-SELECT DATE_ADD(fecha_pago, INTERVAL 6 MONTH) AS proximo_pago FROM seguro WHERE id_vehiculo = idVehiculo;
-END IF;
-END $$
-DELIMITER ;
-		
+DELIMITER ;			
 		      
 		      		/* Procedimiento para cargar el número de verificaciones del vehiculo*/
 DELIMITER $$
@@ -188,7 +162,7 @@ DELIMITER $$
 CREATE procedure select_proxima_verificacion(
 	IN ID INT(4))
 BEGIN		      
-SELECT proxima_fecha, DATEDIFF(CURDATE(), fecha_verificacion) as dias from verificaciones WHERE id_vehiculo = ID order by proxima_fecha ASC LIMIT 1;
+SELECT proxima_fecha from verificaciones WHERE id_vehiculo = ID order by fecha_verificacion DESC LIMIT 1;
 END $$		
 		
 		  

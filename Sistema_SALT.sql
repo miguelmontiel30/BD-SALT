@@ -1,5 +1,15 @@
 CREATE DATABASE SALT;
 USE SALT;
+						/* Creación de la tabla usuarios */
+                                     
+CREATE TABLE usuarios(
+id_usuario INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+nombre VARCHAR(25) NOT NULL,
+apellido VARCHAR(25) NOT NULL,
+rol VARCHAR(15) NOT NULL,
+contrasenia VARCHAR(20) NOT NULL,
+foto_perfil varchar(50) NULL,
+estado_usuario VARCHAR(1	5) NULL DEFAULT 'Activo');  
 
 					/* Creación de la tabla Vehículos */
                                     
@@ -134,16 +144,7 @@ importe FLOAT NULL,
 id_proveedor INT(4) ZEROFILL NOT NULL,
 FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor));						  
 
-									/* Creación de la tabla usuarios */
-                                     
-CREATE TABLE usuarios(
-id_usuario INT(4) ZEROFILL AUTO_INCREMENT NOT NULL PRIMARY KEY,
-nombre VARCHAR(25) NOT NULL,
-apellido VARCHAR(25) NOT NULL,
-rol VARCHAR(15) NOT NULL,
-contrasenia VARCHAR(20) NOT NULL,
-foto_perfil MEDIUMBLOB NULL),
-estado_usuario VARCHAR(25) NULL DEFAULT 'Activo';                                                         
+									                                                       
                                     
                                     
 									/* Creación de la tabla viajes */

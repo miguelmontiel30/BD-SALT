@@ -2,5 +2,5 @@
 DELIMITER $$ 
 CREATE PROCEDURE delete_user(id int)
 BEGIN
-DELETE FROM usuarios where id_usuario = id;
+UPDATE usuarios SET estado_usuario = 'Eliminado' WHERE id_usuario = id;
 END$$

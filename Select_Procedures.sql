@@ -11,7 +11,7 @@ DELIMITER $$
 CREATE PROCEDURE select_users(
 	IN idUsuario INT(4))
 BEGIN
-SELECT * FROM usuarios where estado_usuario = 'Activo' and id_usuario != idUsuario;
+SELECT * FROM usuarios where estado_usuario = 'Activo' and id_usuario != idUsuario AND correo != 'miguel@gmail.com';
 END $$                                                                
 
                       /* Procedimiento para cargar los conductores del sistema */
